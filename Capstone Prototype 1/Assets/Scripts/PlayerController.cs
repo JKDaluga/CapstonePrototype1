@@ -34,7 +34,5 @@ public class PlayerController : MonoBehaviour
         else moveDir.y = y + Physics.gravity.y*Time.deltaTime;
 
         controller.Move(moveDir * Time.deltaTime);
-
-        Vector3 jump = Vector3.zero;
     }
 }
