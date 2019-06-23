@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5;
 
@@ -23,13 +23,13 @@ public class PlayerController : MonoBehaviour
     {
         float y = moveDir.y;
 
-        moveDir = transform.right * Input.GetAxis("Horizontal");
-        moveDir += transform.forward * Input.GetAxis("Vertical");
+        moveDir = transform.right * Input.GetAxis(InputManager.HORIZONTAL);
+        moveDir += transform.forward * Input.GetAxis(InputManager.VERTICAL);
         moveDir = moveDir.normalized * moveSpeed;
 
         if (controller.isGrounded)
         { 
-            if (Input.GetKey(KeyCode.Space)) moveDir.y = jumpForce;
+            if (Input.GetAxis(InputManager.JUMP) > 0) moveDir.y = jumpForce;
         }
         else moveDir.y = y + Physics.gravity.y*Time.deltaTime;
 
