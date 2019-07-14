@@ -20,7 +20,8 @@ public class CursorManager : MonoBehaviour
     {
         switch (obj.tag)
         {
-            case "water":
+            case "Steam":
+            case "Ice":
                 crossHairs.color = Color.yellow;
                 break;
             default:

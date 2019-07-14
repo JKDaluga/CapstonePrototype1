@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
                 currentTarget = target;
             }
 
-            Interactable interactable = target.GetComponent<Interactable>();
+            IInteractable interactable = target.GetComponent<IInteractable>();
             if (interactable != null)
             {
                 interactable.Interact(gameObject);
