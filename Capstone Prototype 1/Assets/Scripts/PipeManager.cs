@@ -18,8 +18,9 @@ public class PipeManager : MonoBehaviour
         
     }
 
-    /*bool switchPipe(Pipe origPipe, Pipe exitPipe)
+    bool switchPipe(Pipe origPipe, Pipe exitPipe)
     {
         origPipe.exitPipe = exitPipe;
-    }*/
+        return true;
+    }
 }
