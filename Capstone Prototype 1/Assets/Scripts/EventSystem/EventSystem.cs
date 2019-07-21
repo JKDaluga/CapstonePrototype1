@@ -44,9 +44,15 @@ namespace EventSystem
             eventListeners[eventType].Add(listener);
         }
 
-        public void unregisterListener()
+        public bool unregisterListener(System.Type eventType, EventListener listener)
         {
-            //TODO
+            if (eventListeners == null || eventListeners.ContainsKey(eventType) == false || eventListeners[eventType] == null)
+            {
+                // there isn't a listener for that event
+                return false;
+            }
+
+            return eventListeners[eventType].Remove(listener);
         }
 
         public void TriggerEvent(EventInfo e)
