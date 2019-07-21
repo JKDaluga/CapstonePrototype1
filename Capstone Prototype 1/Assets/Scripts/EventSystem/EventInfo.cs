@@ -13,6 +13,12 @@ namespace EventSystem
     {
         public bool isToggled;
         public GameObject self;
+
+        public toggleEvent(bool toggle, GameObject obj)
+        {
+            isToggled = toggle;
+            self = obj;
+        }
     }
 }
 
