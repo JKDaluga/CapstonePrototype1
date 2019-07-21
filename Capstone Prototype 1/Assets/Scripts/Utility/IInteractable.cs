@@ -2,5 +2,5 @@
 
 public interface IInteractable
 {
-    void Interact(GameObject player);
+    void Interact(GameObject actor);
 }

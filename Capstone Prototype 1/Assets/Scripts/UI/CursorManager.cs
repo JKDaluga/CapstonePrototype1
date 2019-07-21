@@ -18,6 +18,11 @@ public class CursorManager : MonoBehaviour
 
     public void SetCurser(GameObject obj)
     {
+        if (obj == null)
+        {
+            crossHairs.color = Color.white;
+            return;
+        }
         switch (obj.tag)
         {
             case "Steam":
