@@ -93,27 +93,8 @@ public class ObjectPooler: MonoBehaviour
     #endregion
 
     #region SpawningFromPool
-    GameObject SpawnFromPool(string poolTag, Vector3 position, Vector3 rotation)
-    {
-        if (!dictionary.ContainsKey(poolTag))
-        {
-            Debug.LogWarning("WARNING: Pool with tag, " + poolTag + ", does not exist in teh current context!");
-            return null;
-        }
 
-        (GameObject obj, System.Action action) = dictionary[poolTag].Dequeue();
-
-        obj.transform.position = position;
-        obj.transform.rotation = Quaternion.Euler(rotation);
-        obj.SetActive(true);
-        action.Invoke();
-
-        dictionary[poolTag].Enqueue((obj, action));
-
-        return obj;
-    }
-
-    public GameObject SpawnFromPool(string poolTag, Vector3 position, Quaternion rotation)
+    private GameObject SpawnFromPool(string poolTag, Vector3 position, Quaternion rotation, Vector3 scale)
     {
         if (!dictionary.ContainsKey(poolTag))
         {
@@ -125,6 +106,8 @@ public class ObjectPooler: MonoBehaviour
 
         obj.transform.position = position;
         obj.transform.rotation = rotation;
+        obj.transform.localScale = scale;
+
         obj.SetActive(true);
         action.Invoke();
 
@@ -133,87 +116,26 @@ public class ObjectPooler: MonoBehaviour
         return obj;
     }
 
+    GameObject SpawnFromPool(string poolTag, Vector3? position, Vector3? rotation, Vector3? scale = null)
+    {
+        return SpawnFromPool(poolTag, position ?? Vector3.zero, Quaternion.Euler(rotation ?? Vector3.zero), scale ?? Vector3.one);
+    }
+
     public GameObject SpawnFromPool(string poolTag, Transform objTransform)
     {
-        if (!dictionary.ContainsKey(poolTag))
-        {
-            Debug.LogWarning("WARNING: Pool with tag, " + poolTag + ", does not exist in teh current context!");
-            return null;
-        }
-
-        (GameObject obj, System.Action action) = dictionary[poolTag].Dequeue();
-
-        obj.transform.position = objTransform.position;
-        obj.transform.rotation = objTransform.rotation;
-        obj.SetActive(true);
-        action.Invoke();
-
-        dictionary[poolTag].Enqueue((obj, action));
-
-        return obj;
+        return SpawnFromPool(poolTag, objTransform.position, objTransform.rotation, objTransform.localScale);
     }
 
     public GameObject SpawnFromPool(ObjectPoolTag tag, Transform objTransform)
     {
         string poolTag = GetTag(tag);
-        if (!dictionary.ContainsKey(poolTag))
-        {
-            Debug.LogWarning("WARNING: Pool with tag, " + poolTag + ", does not exist in teh current context!");
-            return null;
-        }
-
-        (GameObject obj, System.Action action) = dictionary[poolTag].Dequeue();
-
-        obj.transform.position = objTransform.position;
-        obj.transform.rotation = objTransform.rotation;
-        obj.SetActive(true);
-        action.Invoke();
-
-        dictionary[poolTag].Enqueue((obj, action));
-
-        return obj;
+        return SpawnFromPool(poolTag, objTransform.position, objTransform.rotation, objTransform.localScale);
     }
 
-    public GameObject SpawnFromPool(ObjectPoolTag tag, Vector3 position, Vector3 rotation)
+    public GameObject SpawnFromPool(ObjectPoolTag tag, Vector3? position, Vector3? rotation, Vector3? scale)
     {
         string poolTag = GetTag(tag);
-        if (!dictionary.ContainsKey(poolTag))
-        {
-            Debug.LogWarning("WARNING: Pool with tag, " + poolTag + ", does not exist in teh current context!");
-            return null;
-        }
-
-        (GameObject obj, System.Action action) = dictionary[poolTag].Dequeue();
-
-        obj.transform.position = position;
-        obj.transform.rotation = Quaternion.Euler(rotation);
-        obj.SetActive(true);
-        action.Invoke();
-
-        dictionary[poolTag].Enqueue((obj, action));
-
-        return obj;
-    }
-
-    public GameObject SpawnFromPool(ObjectPoolTag tag, Vector3 position, Quaternion rotation)
-    {
-        string poolTag = GetTag(tag);
-        if (!dictionary.ContainsKey(poolTag))
-        {
-            Debug.LogWarning("WARNING: Pool with tag, " + poolTag + ", does not exist in teh current context!");
-            return null;
-        }
-
-        (GameObject obj, System.Action action) = dictionary[poolTag].Dequeue();
-
-        obj.transform.position = position;
-        obj.transform.rotation = rotation;
-        obj.SetActive(true);
-        action.Invoke();
-
-        dictionary[poolTag].Enqueue((obj, action));
-
-        return obj;
+        return SpawnFromPool(poolTag, position ?? Vector3.zero, Quaternion.Euler(rotation ?? Vector3.zero), scale ?? Vector3.one);
     }
     #endregion
 
