@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace EventSystem
+namespace EventCallbacks
 {
     public class EventInfo
     {
