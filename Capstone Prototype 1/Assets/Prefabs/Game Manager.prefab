@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3670027879195835766}
   - component: {fileID: 204309214167088384}
   - component: {fileID: 1196823868906660703}
+  - component: {fileID: 5703610555283100583}
   m_Layer: 2
   m_Name: Game Manager
   m_TagString: Untagged
@@ -44,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c033fd94e69d17f40a86274bb06b225b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pools: []
+  maxWaterObjects: 20
 --- !u!114 &1196823868906660703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,3 +60,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPooler: {fileID: 0}
+--- !u!114 &5703610555283100583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336119219870714589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b18525b67fb3314e8754437173a9329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
