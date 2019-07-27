@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PipeManager : MonoBehaviour
+public class PipeListener : MonoBehaviour
 {
-
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +14,5 @@ public class PipeManager : MonoBehaviour
     void Update()
     {
         
-    }
-
-    bool switchPipe(Pipe origPipe, Pipe exitPipe)
-    {
-        //origPipe.exitPipe = exitPipe;
-        return true;
     }
 }

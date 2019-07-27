@@ -19,7 +19,7 @@ public class Door : MonoBehaviour
 
     void changeState(EventCallbacks.toggleEvent e)
     {
-        if(toggler = e.self)
+        if(toggler == e.self)
         {
             if(e.isToggled)
             {

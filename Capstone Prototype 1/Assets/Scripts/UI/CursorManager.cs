@@ -18,20 +18,13 @@ public class CursorManager : MonoBehaviour
 
     public void SetCurser(GameObject obj)
     {
-        if (obj == null)
+        if (obj == null || obj.GetComponent<IInteractable>() == null)
         {
             crossHairs.color = Color.white;
-            return;
         }
-        switch (obj.tag)
+        else
         {
-            case "Steam":
-            case "Ice":
-                crossHairs.color = Color.yellow;
-                break;
-            default:
-                crossHairs.color = Color.white;
-                break;
+            crossHairs.color = Color.yellow;
         }
     }
 }
