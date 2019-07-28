@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6485503236900480297}
   - component: {fileID: 6485503236900480294}
   - component: {fileID: 6485503236900480295}
-  - component: {fileID: 6485503236900480292}
+  - component: {fileID: -3341993475040622049}
   m_Layer: 0
   m_Name: Ice
   m_TagString: Ice
@@ -101,15 +101,15 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6485503236900480293}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 20
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &6485503236900480292
+--- !u!114 &-3341993475040622049
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6485503236900480293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31296f38c9e7ddf46bb6ca4b39e5ae18, type: 3}
+  m_Script: {fileID: 11500000, guid: 472b82440c9f0364c802853f6bd9d013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 20

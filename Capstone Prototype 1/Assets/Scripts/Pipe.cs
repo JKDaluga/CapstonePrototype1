@@ -11,7 +11,7 @@ public class Pipe : MonoBehaviour
 
     public Pipe exitPipe1;
     public Pipe exitPipe2;
-    private bool mode;
+    private bool mode = true;
 
     // Start is called before the first frame update
     void Start()

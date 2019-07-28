@@ -413,6 +413,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8052065321878561427, guid: 041d20cc5b602a04f99de03e5280947e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8052065321878561430, guid: 041d20cc5b602a04f99de03e5280947e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -473,6 +478,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8833df726a178460ca24a9fff9cb0c1c, type: 2}
+    - target: {fileID: 8052065322228650629, guid: 041d20cc5b602a04f99de03e5280947e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 041d20cc5b602a04f99de03e5280947e, type: 3}
 --- !u!114 &354112768 stripped
@@ -1007,6 +1017,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8052065321878561427, guid: 041d20cc5b602a04f99de03e5280947e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8052065321878561430, guid: 041d20cc5b602a04f99de03e5280947e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1061,6 +1076,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052065322228650629, guid: 041d20cc5b602a04f99de03e5280947e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 041d20cc5b602a04f99de03e5280947e, type: 3}
@@ -2144,16 +2164,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: 7774759087893840951, guid: 44aef1b542d4ec34f89ab4f2d2d1061d,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7774759087893840951, guid: 44aef1b542d4ec34f89ab4f2d2d1061d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.331
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44aef1b542d4ec34f89ab4f2d2d1061d, type: 3}
 --- !u!1001 &8052065322102091955
@@ -2167,6 +2177,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pipe
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052065321878561427, guid: 041d20cc5b602a04f99de03e5280947e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8052065321878561430, guid: 041d20cc5b602a04f99de03e5280947e,
         type: 3}
@@ -2222,6 +2237,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052065322228650629, guid: 041d20cc5b602a04f99de03e5280947e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8052065321878561426, guid: 041d20cc5b602a04f99de03e5280947e,
         type: 3}
