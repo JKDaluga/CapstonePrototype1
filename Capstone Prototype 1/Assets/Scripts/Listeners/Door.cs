@@ -1,13 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+public enum doorTypes
+{
+    and,
+    or
+}
 
 public class Door : MonoBehaviour
 {
-    public GameObject toggler;
-
+    [Header("Event Settings")]
+    public GameObject[] toggler;
+    public doorTypes type = doorTypes.and;
+    public bool isInverted = false;
+    
     private BoxCollider col;
     private MeshRenderer rend;
+    private int togglerCounter = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -19,19 +30,35 @@ public class Door : MonoBehaviour
 
     void changeState(EventCallbacks.toggleEvent e)
     {
-        if(toggler == e.self)
+        if(Array.IndexOf(toggler, e.self) > -1)
         {
-            if(e.isToggled)
+            if(e.isToggled == !isInverted)
             {
-                print("OPEN");
-                col.enabled = false;
-                rend.enabled = false;
+                togglerCounter++;
+                if (type == doorTypes.or)
+                {
+                    col.enabled = false;
+                    rend.enabled = false;
+                }
+                else if (type == doorTypes.and && togglerCounter == toggler.Length)
+                {
+                    col.enabled = false;
+                    rend.enabled = false;
+                }
             }
             else
             {
-                print("CLOSE");
-                col.enabled = true;
-                rend.enabled = true;
+                togglerCounter--;
+                if(type == doorTypes.or && togglerCounter == 0)
+                {
+                    col.enabled = true;
+                    rend.enabled = true;
+                }
+                else if (type == doorTypes.and && togglerCounter < toggler.Length)
+                {
+                    col.enabled = true;
+                    rend.enabled = true;
+                }
             }
         }
     }
