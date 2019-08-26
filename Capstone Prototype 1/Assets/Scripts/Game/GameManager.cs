@@ -5,6 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(ObjectPooler))]
 public class GameManager : MonoBehaviour
 {
+    public static System.Action<bool> DisableOnPause;
+    [SerializeField]
+    PauseMenu pauseMenu;
+    [HideInInspector]
+    public ObjectPooler objectPooler;
+    [HideInInspector]
+    public bool gameIsPaused = false;
+
 
     private static GameManager m_instance;
     public static GameManager Instance
@@ -14,8 +22,6 @@ public class GameManager : MonoBehaviour
             return m_instance;
         }
     }
-    [HideInInspector]
-    public ObjectPooler objectPooler;
 
     private void Awake()
     {
@@ -23,7 +29,19 @@ public class GameManager : MonoBehaviour
         else
         {
             m_instance = this;
-            objectPooler = new ObjectPooler();   
+            objectPooler = new ObjectPooler();
+            Cursor.lockState = CursorLockMode.Locked; 
+        }
+    }
+
+    public void PauseGame()
+    {
+        gameIsPaused = !gameIsPaused;
+        pauseMenu.ToggleMenu();
+        Cursor.lockState = gameIsPaused ? CursorLockMode.None : CursorLockMode.Locked;
+        if (DisableOnPause != null)
+        {
+            DisableOnPause(gameIsPaused);
         }
     }
 }
