@@ -35,6 +35,7 @@ public class Door : MonoBehaviour
             if(e.isToggled == !isInverted)
             {
                 togglerCounter++;
+                print("togglerCounter: " + togglerCounter + "toggler: " + toggler.Length);
                 if (type == doorTypes.or)
                 {
                     col.enabled = false;
@@ -44,6 +45,10 @@ public class Door : MonoBehaviour
                 {
                     col.enabled = false;
                     rend.enabled = false;
+                }
+                else
+                {
+                    print("ggggggg");
                 }
             }
             else
