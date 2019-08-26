@@ -9,11 +9,12 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5;
 
     public float jumpForce = 5;
-    public float drag = 100;
+    public float drag = 60;
+    public LayerMask canJump;
 
     private Vector3 moveDir;
     private Rigidbody body;
-    private CapsuleCollider collider;
+    private new CapsuleCollider collider;
 
     // Start is called before the first frame update
     void Start()
@@ -37,12 +38,12 @@ public class PlayerMovement : MonoBehaviour
 
             body.velocity = moveDir;
         }
-        else if (body.velocity.magnitude > 0)
+        else if (body.velocity.x != 0 || body.velocity.z != 0)
         {
             ApplyDrag();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && Physics.Raycast(transform.position - new Vector3(0, collider.height/2 , 0), Vector3.down, 0.2f))
+        if (Input.GetKeyDown(KeyCode.Space) && Physics.Raycast(transform.position - new Vector3(0, collider.height/2 , 0), Vector3.down, 0.2f, canJump))
         {
             body.velocity = new Vector3(body.velocity.x, jumpForce, body.velocity.z);
         }
@@ -50,6 +51,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyDrag()
     {
-        body.velocity = new Vector3(body.velocity.x * (1 - drag*Time.deltaTime), body.velocity.y, body.velocity.z * (1 - drag*Time.deltaTime));
+        body.velocity = new Vector3(body.velocity.x * (1 - Mathf.Clamp01(drag*Time.deltaTime)), body.velocity.y, body.velocity.z * (1 - Mathf.Clamp01(drag*Time.deltaTime)));
     }
 }

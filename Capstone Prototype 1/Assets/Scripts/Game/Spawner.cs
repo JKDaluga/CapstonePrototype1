@@ -10,7 +10,6 @@ public class Spawner : MonoBehaviour
     Vector3 rotation;
     Vector3 scale = Vector3.one;
 
-
     private void Start()
     {
         if (useTransform) GameManager.Instance.objectPooler.SpawnFromPool(objectTag, transform);
