@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        moveDir = new Vector3(Input.GetAxis(InputManager.HORIZONTAL), 0, Input.GetAxis(InputManager.VERTICAL));
+        moveDir = new Vector3(Input.GetAxisRaw(InputManager.HORIZONTAL), 0, Input.GetAxisRaw(InputManager.VERTICAL));
 
         if (moveDir.magnitude > 0)
         {

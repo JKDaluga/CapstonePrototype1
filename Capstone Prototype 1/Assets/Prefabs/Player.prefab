@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5383441848133475559}
   - component: {fileID: 5383441848133475558}
   - component: {fileID: 5383441848133475553}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 159682095}
   - component: {fileID: 6091581358415277495}
   - component: {fileID: 3725045644611732230}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ MonoBehaviour:
   drag: 100
   canJump:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1537
 --- !u!114 &3725045644611732230
 MonoBehaviour:
   m_ObjectHideFlags: 0

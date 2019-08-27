@@ -12,6 +12,7 @@ public class Ice2PrototypeBoogaloo : WaterState, IPooledObject
     private void Awake()
     {
         body = GetComponent<Rigidbody>();
+
     }
 
     public override void Interact(GameObject player)
