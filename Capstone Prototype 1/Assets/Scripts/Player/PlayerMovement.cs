@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
             ApplyDrag();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && Physics.Raycast(transform.position - new Vector3(0, 1.1f * collider.height/2 , 0), Vector3.down, 0.2f, canJump))
+        if (Input.GetKey(KeyCode.Space) && Physics.Raycast(transform.position - new Vector3(0, collider.height/2 , 0), Vector3.down, 0.35f, canJump))
         {
             body.velocity = new Vector3(body.velocity.x, jumpForce, body.velocity.z);
         }
