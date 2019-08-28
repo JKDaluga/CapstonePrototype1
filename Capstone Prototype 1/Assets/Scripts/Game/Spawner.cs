@@ -25,6 +25,12 @@ public class Spawner : MonoBehaviour
         Gizmos.color = Color.green;
         switch (objectTag)
         {
+            case ObjectPoolTag.Ice3:
+            {
+                if (useTransform) Gizmos.DrawWireCube(transform.position, transform.localScale);
+                else Gizmos.DrawWireCube(transform.position + offset, scale);
+                break;
+            }
             case ObjectPoolTag.Ice:
             {
                 if (useTransform) Gizmos.DrawWireCube(transform.position, transform.localScale);

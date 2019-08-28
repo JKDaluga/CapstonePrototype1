@@ -5,7 +5,8 @@ using UnityEngine;
 public enum ObjectPoolTag
 {
     Steam,
-    Ice
+    Ice,
+    Ice3,
 }
 
 public class ObjectPooler: MonoBehaviour
@@ -143,6 +144,10 @@ public class ObjectPooler: MonoBehaviour
     {
         switch (tag)
         {
+            case ObjectPoolTag.Ice3:
+            {
+                return "Ice 3";
+            }
             case ObjectPoolTag.Ice:
             {
                 return ICE_KEY;
