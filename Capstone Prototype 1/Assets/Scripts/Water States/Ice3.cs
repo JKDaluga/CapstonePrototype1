@@ -13,6 +13,7 @@ public class Ice3 : WaterState, IPooledObject
     private void Awake()
     {
         target = null;
+        beingHeld = false;
         body = GetComponent<Rigidbody>();
     }
 
@@ -29,7 +30,9 @@ public class Ice3 : WaterState, IPooledObject
             else if (distance.magnitude > 0.05f)
             {
                 Vector3 direction = Vector3.ClampMagnitude(distance * Mathf.Max(distance.sqrMagnitude, 10), 25);
-                body.velocity = Vector3.Lerp(body.velocity, direction, 0.125f);
+                Vector3 velocity = Vector3.Lerp(body.velocity, direction, 0.125f);
+                velocity.y = body.velocity.y;
+                body.velocity = velocity;
             }
             else if (body.velocity.magnitude > 0)
             {
@@ -40,56 +43,63 @@ public class Ice3 : WaterState, IPooledObject
 
     public override void Interact(GameObject player)
     {
-        if (beingHeld)
+        if (!beingHeld && Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                DropObj();
-                Vector3 direction = Vector3.Normalize(transform.position - Camera.main.transform.position);
-                body.AddForce(Vector3.ClampMagnitude(direction * body.mass * 10, 25), ForceMode.Impulse);
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (beingHeld)
-            {
-                DropObj();
-            }
-            else
-            {
-                PickUpObj(Camera.main.transform.GetChild(0));
-            }
+            StartCoroutine(PickUpObj(Camera.main.transform.GetChild(0), player));
         }
         else if (Input.GetMouseButtonDown(1))
         {
             DropObj();
-            GameObject obj = GameManager.Instance.objectPooler.SpawnFromPool(ObjectPooler.STEAM_KEY, transform);
+            GameObject obj = GameManager.Instance.objectPooler.SpawnFromPool(ObjectPooler.WATER_KEY, transform);
+            obj.transform.localScale = new Vector3(2, 0.2f, 2);
             gameObject.SetActive(false);
         }
     }
 
     public void OnObjectSpawn()
     {
-        Debug.Log("Ice On Spawn is Called");
         if (!body) body = GetComponent<Rigidbody>();
         body.velocity = Vector3.zero;
         Vector3 scale = transform.localScale;
         body.mass = (scale.x * scale.y * scale.z) * 5;
-        DropObj();
+        beingHeld = false;
+        target = null;
     }
 
-    private void PickUpObj(Transform targetPos)
+    private IEnumerator PickUpObj(Transform targetPos, GameObject player)
     {
         beingHeld = true;
-        body.useGravity = false;
         target = targetPos;
+        yield return new WaitForSeconds(0.05f);
+        player.GetComponent<PlayerController>().holdingObj = true;
+        EventCallbacks.EventSystem.Current.RegisterListener<EventCallbacks.dropEvent>(DropObjEvent);
+        EventCallbacks.EventSystem.Current.RegisterListener<EventCallbacks.pushEvent>(PushObjEvent);
+    }
+
+    private void DropObjEvent(EventCallbacks.dropEvent e)
+    {
+        if (beingHeld)
+        {
+            DropObj();
+            body.velocity = Vector3.ClampMagnitude(body.velocity, 5);
+        }
+    }
+
+    private void PushObjEvent(EventCallbacks.pushEvent e)
+    {
+        if (beingHeld)
+        {
+            DropObj();
+            Vector3 direction = Vector3.Normalize(transform.position - Camera.main.transform.position);
+            body.AddForce(Vector3.ClampMagnitude(direction * body.mass * 10, 25), ForceMode.Impulse);
+        }
     }
 
     private void DropObj()
     {
         beingHeld = false;
-        body.useGravity = true;
         target = null;
+        EventCallbacks.EventSystem.Current.UnregisterListener<EventCallbacks.dropEvent>(DropObjEvent);
+        EventCallbacks.EventSystem.Current.UnregisterListener<EventCallbacks.pushEvent>(PushObjEvent);
     }
 }

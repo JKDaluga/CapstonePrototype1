@@ -8,11 +8,12 @@ public class PlayerController : MonoBehaviour
     CursorManager cursorManager;
     [SerializeField]
     float interactDistance = 3;
-    bool paused = false;
     GameObject currentTarget = null;
 
     System.Action<GameObject> onInteract;
     bool canInteract = false;
+    [HideInInspector]
+    public bool holdingObj = false;
 
     private void OnEnable() 
     {
@@ -31,7 +32,7 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.PauseGame();
         }
 
-        if (!paused)
+        if (!GameManager.Instance.gameIsPaused)
         {
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, interactDistance))
             {
@@ -69,12 +70,27 @@ public class PlayerController : MonoBehaviour
             {
                 if (onInteract != null) onInteract.Invoke(gameObject);
             }
+
+            if (holdingObj)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    EventCallbacks.dropEvent dropObj = new EventCallbacks.dropEvent();
+                    EventCallbacks.EventSystem.Current.TriggerEvent(dropObj);
+                    holdingObj = false;
+                }
+                else if (Input.GetKeyDown(KeyCode.F))
+                {
+                    EventCallbacks.pushEvent pushObj = new EventCallbacks.pushEvent();
+                    EventCallbacks.EventSystem.Current.TriggerEvent(pushObj);
+                    holdingObj = false;
+                }
+            }
         }
     }
 
     private void Activate(bool value)
     {
-        paused = value;
         GetComponent<PlayerMovement>().enabled = !value;
         GetComponentInChildren<CameraController>().enabled = !value;
     }

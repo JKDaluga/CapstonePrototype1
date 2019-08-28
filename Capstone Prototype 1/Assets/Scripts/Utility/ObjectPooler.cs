@@ -6,7 +6,6 @@ public enum ObjectPoolTag
 {
     Steam,
     Ice,
-    Ice3,
     Water
 }
 
@@ -41,7 +40,7 @@ public class ObjectPooler: MonoBehaviour
                 }
             }
             CreateObjectPool(STEAM_KEY, Resources.Load<GameObject>("Prefabs/Steam"), maxWaterObjects); 
-            CreateObjectPool(ICE_KEY, Resources.Load<GameObject>("Prefabs/Ice"), maxWaterObjects);
+            CreateObjectPool(ICE_KEY, Resources.Load<GameObject>("Prefabs/Ice3"), maxWaterObjects);
             CreateObjectPool(WATER_KEY, Resources.Load<GameObject>("Prefabs/Water"), maxWaterObjects);
         }
     }
@@ -149,10 +148,6 @@ public class ObjectPooler: MonoBehaviour
     {
         switch (tag)
         {
-            case ObjectPoolTag.Ice3:
-            {
-                return "Ice 3";
-            }
             case ObjectPoolTag.Ice:
             {
                 return ICE_KEY;
