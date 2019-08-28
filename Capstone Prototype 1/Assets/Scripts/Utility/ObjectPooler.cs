@@ -23,7 +23,7 @@ public class ObjectPooler: MonoBehaviour
     public static string ICE_KEY = "Ice";
     public static string STEAM_KEY = "Steam";
 
-    private void Start()
+    private void Awake()
     {
         if (m_instance) Destroy(this);
         else
@@ -54,7 +54,7 @@ public class ObjectPooler: MonoBehaviour
         Queue<(GameObject, System.Action)> pool = new Queue<(GameObject, System.Action)>();
         for (int i = 0; i < numberOfObjs; i++)
         {
-            GameObject temp = Instantiate(sampleObj);
+            GameObject temp = GameObject.Instantiate(sampleObj);
             temp.SetActive(false);
             System.Action action = null;
             IPooledObject poolInterface = temp.GetComponent<IPooledObject>();
@@ -98,7 +98,7 @@ public class ObjectPooler: MonoBehaviour
     {
         if (!dictionary.ContainsKey(poolTag))
         {
-            Debug.LogWarning("WARNING: Pool with tag, " + poolTag + ", does not exist in teh current context!");
+            Debug.LogWarning("WARNING: Pool with tag, " + poolTag + ", does not exist in the current context!");
             return null;
         }
 
