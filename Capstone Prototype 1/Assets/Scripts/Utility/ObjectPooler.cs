@@ -7,6 +7,7 @@ public enum ObjectPoolTag
     Steam,
     Ice,
     Ice3,
+    Water
 }
 
 public class ObjectPooler: MonoBehaviour
@@ -23,6 +24,7 @@ public class ObjectPooler: MonoBehaviour
     private static Dictionary<string, Queue<(GameObject, System.Action)>> dictionary;
     public static string ICE_KEY = "Ice";
     public static string STEAM_KEY = "Steam";
+    public static string WATER_KEY = "Water";
 
     private void Awake()
     {
@@ -40,6 +42,7 @@ public class ObjectPooler: MonoBehaviour
             }
             CreateObjectPool(STEAM_KEY, Resources.Load<GameObject>("Prefabs/Steam"), maxWaterObjects); 
             CreateObjectPool(ICE_KEY, Resources.Load<GameObject>("Prefabs/Ice"), maxWaterObjects);
+            CreateObjectPool(WATER_KEY, Resources.Load<GameObject>("Prefabs/Water"), maxWaterObjects);
         }
     }
 
@@ -62,6 +65,7 @@ public class ObjectPooler: MonoBehaviour
             if (poolInterface != null)
             {
                 action = poolInterface.OnObjectSpawn;
+                print(poolTag + action);
             }
             pool.Enqueue((temp, action));
         }
@@ -110,6 +114,7 @@ public class ObjectPooler: MonoBehaviour
         obj.transform.localScale = scale;
 
         obj.SetActive(true);
+        print(action);
         action.Invoke();
 
         dictionary[poolTag].Enqueue((obj, action));
@@ -155,6 +160,10 @@ public class ObjectPooler: MonoBehaviour
             case ObjectPoolTag.Steam:
             {
                 return STEAM_KEY;
+            }
+            case ObjectPoolTag.Water:
+            {
+                return WATER_KEY;
             }
             default:
             {

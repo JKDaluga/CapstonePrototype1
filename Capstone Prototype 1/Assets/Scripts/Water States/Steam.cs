@@ -19,9 +19,10 @@ public class Steam : WaterState, IPooledObject
 
     public override void Interact(GameObject player)
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
-            GameObject obj = GameManager.Instance.objectPooler.SpawnFromPool(ObjectPooler.ICE_KEY, transform);
+            GameObject obj = GameManager.Instance.objectPooler.SpawnFromPool(ObjectPooler.WATER_KEY, transform);
+            obj.transform.localScale = new Vector3(2, 0.2f, 2);
             gameObject.SetActive(false);
         }
     }

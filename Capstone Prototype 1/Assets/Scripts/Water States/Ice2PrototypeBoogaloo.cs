@@ -28,7 +28,8 @@ public class Ice2PrototypeBoogaloo : WaterState, IPooledObject
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            GameObject obj = GameManager.Instance.objectPooler.SpawnFromPool(ObjectPooler.STEAM_KEY, transform);
+            GameObject obj = GameManager.Instance.objectPooler.SpawnFromPool(ObjectPooler.WATER_KEY, transform);
+            obj.transform.localScale = new Vector3(2, 0.2f, 2);
             gameObject.SetActive(false);
         }
     }
@@ -39,15 +40,10 @@ public class Ice2PrototypeBoogaloo : WaterState, IPooledObject
         print(Vector3.Angle(body.velocity, -other.impulse));
         if (true/*Vector3.Angle(body.velocity, -other.impulse) <= 1*/)
         {
-            Debug.Log("Angle is " + angle + ", and the object collided with is " + other.gameObject.name);
             if(other.impulse.magnitude >=10)
             {
                 body.velocity = new Vector3(other.impulse.x, 0, other.impulse.z).normalized * moveSpeed;
                 Invoke("stop", .06f);
-            }
-            else
-            {
-                print(other.impulse.magnitude);
             }
         }
     }
