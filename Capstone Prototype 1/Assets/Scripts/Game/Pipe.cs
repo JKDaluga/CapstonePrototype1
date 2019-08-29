@@ -50,11 +50,13 @@ public class Pipe : MonoBehaviour
         {
             if (mode)
             {
+                if(exitPipe1 != null && exitPipe1.exitSpot != null)
                 other.gameObject.transform.position = exitPipe1.exitSpot.position;
             }
             else
             {
-                other.gameObject.transform.position = exitPipe2.exitSpot.position;
+                if (exitPipe2 != null && exitPipe2.exitSpot != null)
+                    other.gameObject.transform.position = exitPipe2.exitSpot.position;
             }
         }
     }

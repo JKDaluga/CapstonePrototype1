@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 37612081}
   - component: {fileID: 37612080}
   - component: {fileID: 37612079}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Large_Room_Wall_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 39108269}
   - component: {fileID: 39108268}
   - component: {fileID: 39108267}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Metal_Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2602,7 +2602,7 @@ GameObject:
   - component: {fileID: 493430213}
   - component: {fileID: 493430212}
   - component: {fileID: 493430211}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Metal_Gate (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3498,7 +3498,7 @@ GameObject:
   - component: {fileID: 604326521}
   - component: {fileID: 604326520}
   - component: {fileID: 604326519}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Metal_Gate (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5182,16 +5182,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.50000024
       objectReference: {fileID: 0}
-    - target: {fileID: 7774759087893840951, guid: 44aef1b542d4ec34f89ab4f2d2d1061d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.54
-      objectReference: {fileID: 0}
     - target: {fileID: 7774759087893840949, guid: 44aef1b542d4ec34f89ab4f2d2d1061d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d663708ebd61f964ab393c921d5e88b0, type: 2}
+    - target: {fileID: 7774759087893840951, guid: 44aef1b542d4ec34f89ab4f2d2d1061d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.54
+      objectReference: {fileID: 0}
     - target: {fileID: 7774759088388955416, guid: 44aef1b542d4ec34f89ab4f2d2d1061d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6781,6 +6781,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7774759087893840949, guid: 44aef1b542d4ec34f89ab4f2d2d1061d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4921396b9ec3d3643844df18714d1814, type: 2}
     - target: {fileID: 7774759087893840951, guid: 44aef1b542d4ec34f89ab4f2d2d1061d,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -6791,11 +6796,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.049999237
       objectReference: {fileID: 0}
-    - target: {fileID: 7774759087893840949, guid: 44aef1b542d4ec34f89ab4f2d2d1061d,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4921396b9ec3d3643844df18714d1814, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44aef1b542d4ec34f89ab4f2d2d1061d, type: 3}
 --- !u!1 &1135390911 stripped
@@ -6998,7 +6998,7 @@ GameObject:
   - component: {fileID: 1151823458}
   - component: {fileID: 1151823457}
   - component: {fileID: 1151823456}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Metal_Gate (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7451,7 +7451,7 @@ GameObject:
   - component: {fileID: 1186441990}
   - component: {fileID: 1186441989}
   - component: {fileID: 1186441988}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Metal_Gate (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
